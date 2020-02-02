@@ -20,7 +20,8 @@
                 color:  'silver',
                 shape:  'pill',
                 label:  'pay',
-                height: 40
+                height: 40,
+                locale: 'en_GB'
             },
 
             // Set up the transaction
@@ -28,7 +29,8 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '0.01'
+                            value: '10.00',
+                            currency: 'GBP'
                         }
                     }]
                 });

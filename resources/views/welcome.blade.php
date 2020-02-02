@@ -7,13 +7,13 @@
         <title>NOW That's What I Call Animals!</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
 
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: #f6993f;
+                color: white;
                 font-family: 'Bowlby One SC', sans-serif;
                 font-weight: 200;
                 height: 100vh;
