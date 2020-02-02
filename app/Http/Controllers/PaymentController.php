@@ -1,33 +1,4 @@
 <?php
-
-// namespace App\Http\Controllers;
-//
-// use Illuminate\Http\Request;
-//
-// require('vendor/autoload.php');
-//
-// class PaymentController extends Controller
-// {
-//   public function __construct()
-//   {
-// /** PayPal api context **/
-// $api = new \PayPal\Rest\ApiContext(
-//   new \PayPal\Auth\OAuthTokenCredential(
-//     $client_ID,
-//     $client_Secret
-//   )
-// );
-//     }
-//
-//     public function payment()
-//     {
-//       // $data = [
-//       //   'intent' => auth()->user()->createSetupIntent()
-//       // ];
-//       return view('payment');
-//     }
-// }
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -84,8 +55,8 @@ private function getCart($recurring, $invoice_id)
                 'items' => [
                     [
                         'name' => 'Monthly Subscription ' . config('paypal.invoice_prefix') . ' #' . $invoice_id,
-                        'price' => 20,
-                        'qty' => 1,
+                        'price' => 2.99,
+                        'qty' => 1
                     ],
                 ],
 
@@ -107,14 +78,9 @@ private function getCart($recurring, $invoice_id)
             // with name, price and quantity
             'items' => [
                 [
-                    'name' => 'Product 1',
-                    'price' => 10,
-                    'qty' => 1,
-                ],
-                [
-                    'name' => 'Product 2',
-                    'price' => 5,
-                    'qty' => 2,
+                    'name' => 'Membership',
+                    'price' => 10.00,
+                    'qty' => 1
                 ],
             ],
 
@@ -126,7 +92,7 @@ private function getCart($recurring, $invoice_id)
             'cancel_url' => url('/'),
             // total is calculated by multiplying price with quantity of all cart items and then adding them up
             // in this case total is 20 because Product 1 costs 10 (price 10 * quantity 1) and Product 2 costs 10 (price 5 * quantity 2)
-            'total' => 20,
+            'total' => 10.00,
         ];
     }
 
@@ -200,7 +166,27 @@ private function getCart($recurring, $invoice_id)
         // App\Invoice has a paid attribute that returns true or false based on payment status
         // so if paid is false return with error, else return with success message
         if ($invoice->paid) {
-            return redirect('/')->with(['code' => 'success', 'message' => 'Order ' . $invoice->id . ' has been paid successfully!']);
+          return redirect('/')->with(['code' => 'success', 'message' => 'Order ' . $invoice->id . ' has been paid successfully!']);
+          ?>
+          <script type="text/javascript">
+          return function () {
+            window.alert('Payment complete!');
+            var path = "paypal.php";
+            $.ajax({
+              type: 'POST',
+              url: path,
+              data: {
+                tid: invoice.title,
+                state: invoice.payment_status
+              },
+              success: function (res){
+                //console.log(res);
+                $('#successful-payment').html("Payment complete!");
+              }
+            })
+          };
+          </script>
+          <?php
         }
 
         return redirect('/')->with(['code' => 'danger', 'message' => 'Error processing PayPal payment for Order ' . $invoice->id . '!']);
@@ -210,7 +196,7 @@ private function getCart($recurring, $invoice_id)
     {
 
         // add _notify-validate cmd to request,
-        // we need that to validate with PayPal that it was realy
+        // we need that to validate with PayPal that it was really
         // PayPal who sent the request
         $request->merge(['cmd' => '_notify-validate']);
         $post = $request->all();
@@ -220,12 +206,6 @@ private function getCart($recurring, $invoice_id)
 
         //if PayPal responds with VERIFIED we are good to go
         if ($response === 'VERIFIED') {
-
-            /**
-                This is the part of the code where you can process recurring payments as you like
-                in this case we will be checking for recurring_payment that was completed
-                if we find that data we create new invoice
-            */
             if ($post['txn_type'] == 'recurring_payment' && $post['payment_status'] == 'Completed') {
                 $invoice = new Invoice();
                 $invoice->title = 'Recurring payment';
@@ -245,61 +225,4 @@ private function getCart($recurring, $invoice_id)
         }
 
     }
-    // /**
-    //  * Responds with a welcome message with instructions
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function payment()
-    // {
-    //     $data = [];
-    //     $data['items'] = [
-    //         [
-    //             'name' => 'ItSolutionStuff.com',
-    //             'price' => 100,
-    //             'desc'  => 'Description for ItSolutionStuff.com',
-    //             'qty' => 1
-    //         ]
-    //     ];
-    //
-    //     $data['invoice_id'] = 1;
-    //     $data['invoice_description'] = "Order #{$data['invoice_id']} Invoice";
-    //     $data['return_url'] = route('payment.success');
-    //     $data['cancel_url'] = route('payment.cancel');
-    //     $data['total'] = 100;
-    //
-    //     $provider = new ExpressCheckout;
-    //
-    //     $response = $provider->setExpressCheckout($data);
-    //
-    //     $response = $provider->setExpressCheckout($data, true);
-    //
-    //     return redirect($response['paypal_link']);
-    // }
-
-    // /**
-    //  * Responds with a welcome message with instructions
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function cancel()
-    // {
-    //     dd('Your payment is canceled. You can create cancel page here.');
-    // }
-    //
-    // /**
-    //  * Responds with a welcome message with instructions
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function success(Request $request)
-    // {
-    //     $response = $provider->getExpressCheckoutDetails($request->token);
-    //
-    //     if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-    //         dd('Your payment was successfully. You can create success page here.');
-    //     }
-    //
-    //     dd('Something is wrong.');
-    // }
 }
