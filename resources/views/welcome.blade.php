@@ -108,7 +108,6 @@
                     <a href="https://nova.laravel.com">Nova</a><br>
                     <a href="https://forge.laravel.com">Forge</a><br>
                     <a href="https://vapor.laravel.com">Vapor</a><br>
-                    <a href="https://github.com/laravel/laravel">GitHub</a><br>
                 </div>
             </div>
         </div>

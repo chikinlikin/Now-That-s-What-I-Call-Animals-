@@ -26,12 +26,10 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     NOW That's What I Call Animals!
                   </a>
-                    <div>
-                     <div class="navbar-tag">Hey, {{ Auth::user()->name }}! Get full membership today for just £10!<a href="{{ route('paypal.express-checkout') }}" class='btn-info btn'>Subscribe</a></div>
-                     <!-- <div class="panel-body">
-                      <a href="{{ route('paypal.express-checkout') }}" class='btn-info btn'>PayPal</a>
-                     </div> -->
-                    </div>
+                    <!-- <div>
+                     <div class="navbar-tag">Get full membership today for just £10!
+                       <a href="{{ route('paypal.express-checkout') }}" class='btn-info btn'>Subscribe</a></div>
+                    </div> -->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
