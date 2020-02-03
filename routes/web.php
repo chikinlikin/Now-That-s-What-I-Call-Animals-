@@ -19,6 +19,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('paypal/express-checkout', 'PaymentController@expressCheckout')->name('paypal.express-checkout');
-Route::get('paypal/express-checkout-success', 'PaymentController@expressCheckoutSuccess');
-Route::post('paypal/notify', 'PaymentController@notify');
+Route::get('/secret-page', 'SecretPageController@secret')->name('secret');

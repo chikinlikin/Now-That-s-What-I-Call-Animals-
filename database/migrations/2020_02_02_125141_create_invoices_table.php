@@ -16,7 +16,7 @@ class CreateInvoicesTable extends Migration
          Schema::create('invoices', function (Blueprint $table) {
              $table->increments('id');
              $table->string('title');
-             $table->double('price', 2);
+             $table->double('price', 10);
              $table->string('payment_status')->nullable();
              $table->string('recurring_id')->nullable();
              $table->timestamps();

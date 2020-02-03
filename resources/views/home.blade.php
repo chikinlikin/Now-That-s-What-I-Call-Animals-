@@ -40,7 +40,28 @@
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
                     // Show a success message to the buyer
-                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                    alert('Subscription processed for ' + details.payer.name.given_name + '! Welcome!');
+                    //alert('Sending the variables: ' + details.payer.id + " and " + details.payer.status);
+                    var path = "pay.php";
+                    $.ajax({
+                      type: 'POST',
+                      url: path,
+                      data: {
+                        tid: details.id,
+                        state: details.status
+                      },
+                      success: function (response){
+                        if (response == "success"){
+                          console.log(response);
+                          $('#successful-payment').html("Payment successful!");
+                          //redirect to a secret members' page after a certain amount of time
+                          setTimeout(function () {
+                            window.location.href = "secret-page";
+                          }, 2500);
+                        }
+                      }
+                    });
+
                 });
             }
 
@@ -59,9 +80,12 @@
       <div class="container col-4">
         <!-- Set up a container element for the button -->
         <div id="paypal-button-container"></div>
+        <h1 id="successful-payment"></h1>
       </div>
       <div class="col-8">
         <div class="card-header" style="color: green"> < < Subscribe now for just £10!</div>
+        <div class="card-header" id="successful-payment"></div>
+
         <div class="card-body">
         <ul><li>Exclusive animal facts and downloads</li>
 <li>Secure checkout with PayPal</li></ul>
