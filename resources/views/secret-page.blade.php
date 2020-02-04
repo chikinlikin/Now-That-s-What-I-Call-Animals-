@@ -9,22 +9,19 @@
 
 <body>
         <div class="row pt-4">
-          <!-- <div id="paypal-button-container"></div> -->
-
           <div class="col-4">
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Lion_d%27Afrique.jpg" class="w-100">
           </div>
           <div class="col-8">
             <div class="card-header">Secret download!</div>
-            <!-- <div class="card-body">
-              <li>Very secret!</li> -->
-              <script> alert("Entering top secret area!"); </script>
-                <? if (verifyMembership()): ?>
-                  <a href="{{ route('download') }}">Secret download!</a>
-                <? endif; ?>
-
-                <!--<a href="{{ route('download') }}">Secret download!</a>-->
-
+            <div class="card-body">
+              <!-- <script> alert("Entering top secret area!"); </script> -->
+                <?php if ('{{ Auth::user()->verifyMembership() }}' == true){ ?>
+                    <a>You're a member!</a><br>
+                    <a href="{{ route('download') }}">Secret download!</a><br>
+                <?php } else { ?>
+                    <a>You're not a member :(</a>
+                <?php } ?>
           </div>
         </div>
 </div>

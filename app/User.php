@@ -2,11 +2,10 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use \app\Member;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -44,15 +43,15 @@ class User extends Authenticatable
     }
 
     public function verifyMembership(){
-
-      echo "trying to verify membership!";
-      $results = users::where('name', '=', $user->name)->first();
-      echo $results;
-      if ($results){
-        if ($results.membership == 1){
-        return true;
-      }
-      }
-      return false;
+      // $results = User::where([
+      //  'name' => Auth::User()->name,
+      //  'membership' => 1])->get();
+      $results = User::where('name', "=", Auth::User()->name)->first();
+      print $results;
+      if ($results->membership == 1){
+          return true;
+      } else {
+        return false;
     }
+  }
 }
