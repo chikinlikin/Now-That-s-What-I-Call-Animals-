@@ -1,10 +1,11 @@
 <?php
 
-include '../config/PayPalCheckout.php';
+include '/PayPalCheckout.php';
 
 //Create PaypalCheckout object
 $payment = new PaypalCheckout();
 //?{{ Auth::user()->name }}
+echo "hello";
 if (isset($_POST['data'])){
   echo $_POST['data'];
 }

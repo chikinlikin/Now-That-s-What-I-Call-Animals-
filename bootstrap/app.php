@@ -40,6 +40,10 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
+//
+// $app->withFacades(
+//   Illuminate\Support\Facades\DB::class
+// );
 
 /*
 |--------------------------------------------------------------------------

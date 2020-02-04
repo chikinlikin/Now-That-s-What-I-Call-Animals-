@@ -16,11 +16,17 @@
           </div>
           <div class="col-8">
             <div class="card-header">Secret download!</div>
-            <div class="card-body">
-            <ul>
-  <li>Very secret!</li>
-</ul>
+            <!-- <div class="card-body">
+              <li>Very secret!</li> -->
+              <script> alert("Entering top secret area!"); </script>
+                <? if (verifyMembership()): ?>
+                  <a href="{{ route('download') }}">Secret download!</a>
+                <? endif; ?>
+
+                <!--<a href="{{ route('download') }}">Secret download!</a>-->
+
           </div>
         </div>
 </div>
+</body>
 @endsection

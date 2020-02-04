@@ -14,10 +14,9 @@ class CreateMembersTable extends Migration
     public function up()
     {
         Schema::create('members', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamps();
+            $table->bigIncrements('tid');
+            $table->timestamp('transaction_date');
         });
     }
 
