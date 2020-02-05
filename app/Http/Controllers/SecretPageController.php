@@ -33,4 +33,8 @@ class SecretPageController extends Controller
     {
       return redirect()->to('download.php');
     }
+
+    // public function pay(){
+    //   return redirect()->to('pay.php');
+    // }
 }

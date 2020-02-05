@@ -5,6 +5,7 @@
     <!-- Add meta tags for mobile and IE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <?php header("Access-Control-Allow-Origin: *"); ?>
 </head>
 
 <body>
@@ -50,6 +51,8 @@
                         tid: details.id,
                         state: details.status
                       },
+                      contentType: "application/json; charset=UTF-8",
+                      dataType: "json",
                       success: function (response){
                         if (response == "success"){
                           console.log(response);

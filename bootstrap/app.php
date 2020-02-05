@@ -40,10 +40,10 @@ $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
 );
-//
-// $app->withFacades(
-//   Illuminate\Support\Facades\DB::class
-// );
+
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: *');
+header('Access-Control-Allow-Headers: Origin, X-Requested-With,Authorization, Content-Type, Accept');
 
 /*
 |--------------------------------------------------------------------------

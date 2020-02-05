@@ -1,4 +1,5 @@
-<?
+<?php
+
 namespace App\Http\Controllers;
 
 use \DB;
@@ -9,11 +10,13 @@ class PaypalCheckout{
   private $db;
 
   public function __construct(){
+    print "PaypalCheckout.__construct()";
     $conn = new dbConn();
     $this->db = $conn->db();
   }
 
   public function pay($username, $tid, $state){
+    echo "PaypalCheckout.pay()";
     $date = new DateTime;
     $transaction_date = $date->format('dd/mm/YYYY hh:mm:ss');
     if($this->check_txn_id($tid) == 0){

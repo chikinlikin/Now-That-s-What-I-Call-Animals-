@@ -19,6 +19,9 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        'https://www.sandbox.paypal.com/*',
+        'hannahSite3/*',
+        'home',
+        'pay'
     ];
 }

@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/secret-page', 'SecretPageController@secret')->name('secret');
 Route::get('/secret/download', 'SecretPageController@download')->name('download');
+//Route::post('/pay.php', 'SecretPageController@pay')->name('pay');
