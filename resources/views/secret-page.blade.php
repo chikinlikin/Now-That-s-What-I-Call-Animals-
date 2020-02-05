@@ -16,7 +16,8 @@
             <div class="card-header">Secret download!</div>
             <div class="card-body">
               <!-- <script> alert("Entering top secret area!"); </script> -->
-                <?php if ('{{ Auth::user()->verifyMembership() }}' == true){ ?>
+                <?php if (Auth::user()->verifyMembership() == true){ ?>
+                    {{ Auth::user()->verifyMembership() }}
                     <a>You're a member!</a><br>
                     <a href="{{ route('download') }}">Secret download!</a><br>
                 <?php } else { ?>

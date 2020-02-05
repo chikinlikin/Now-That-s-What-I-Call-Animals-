@@ -43,12 +43,10 @@ class User extends Authenticatable
     }
 
     public function verifyMembership(){
-      // $results = User::where([
-      //  'name' => Auth::User()->name,
-      //  'membership' => 1])->get();
-      $results = User::where('name', "=", Auth::User()->name)->first();
-      print $results;
-      if ($results->membership == 1){
+      $results = User::where([
+       'name' => Auth::User()->name,
+       'membership' => 1])->get();
+      if (!count($results) == 0){
           return true;
       } else {
         return false;
