@@ -1,16 +1,17 @@
-<?
+<!--
 namespace App\Http\Controllers;
 
 use \DB;
-include '../config/dbConn.php';
+//include '../config/dbConn.php';
 
 class PaypalCheckout{
 
-  private $db;
+  //private $db;
 
   public function __construct(){
-    $conn = new dbConn();
-    $this->db = $conn->db();
+    print "Creating new PayPalCheckout instance";
+    // $conn = new dbConn();
+    // $this->db = $conn->db();
   }
 
   public function pay($username, $tid, $state){
@@ -48,4 +49,4 @@ class PaypalCheckout{
     }
     return false;
   }
-}
+} -->

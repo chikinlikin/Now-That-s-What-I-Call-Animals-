@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <?php header("Access-Control-Allow-Origin: *"); ?>
+    <?php session_start(); ?>
 </head>
 
 <body>
@@ -15,8 +16,6 @@
     <script>
         // Render the PayPal button into #paypal-button-container
         paypal.Buttons({
-
-
             style: {
                 color:  'silver',
                 shape:  'pill',
@@ -24,7 +23,6 @@
                 height: 40,
                 locale: 'en_GB'
             },
-
             // Set up the transaction
             createOrder: function(data, actions) {
                 return actions.order.create({
@@ -39,37 +37,62 @@
 
             // Finalize the transaction
             onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
+                actions.order.capture().then(function(details) {
                     // Show a success message to the buyer
-                    alert('Subscription processed for ' + details.payer.name.given_name + '! Welcome!');
-                    //alert('Sending the variables: ' + details.payer.id + " and " + details.payer.status);
-                    var path = "pay.php";
+                    //alert('Subscription processed for ' + details.payer.name.given_name + '! Welcome!');
+                    alert('Sending the variables: ' + details.id + " and " + details.status);
+                    var path = "./pay.php";
                     $.ajax({
                       type: 'POST',
                       url: path,
-                      data: {
+                      data: JSON.stringify({
                         tid: details.id,
                         state: details.status
-                      },
-                      contentType: "application/json; charset=UTF-8",
-                      dataType: "json",
-                      success: function (response){
-                        if (response == "success"){
-                          console.log(response);
-                          $('#successful-payment').html("Payment successful!");
-                          //redirect to a secret members' page after a certain amount of time
-                          setTimeout(function () {
-                            window.location.href = "secret-page";
-                          }, 2500);
-                        }
+                      }),
+                      contentType: "application/json; charset=utf-8",
+                      // success: function (res) {
+                      //   alert("Payment is complete");
+                      //   $('#successful-payment').html("Payment successful!");
+                      //   window.location.href = 'secret-page';
+                      // }
+                    // return fetch(path, {
+                    //   method: 'post',
+                    //   headers: {
+                    //     'content-type': 'application/json'
+                    //   },
+                    //   body: JSON.stringify({
+                    //     tid: details.id,
+                    //     state: details.status
+                    }).then(function(response){
+                      if (response == "success"){
+                        //     console.log("home.blade.php, the response is: " + response);
+                        //     $('#successful-payment').html("Payment successful!");
+                        // redirect to the completed page if paid
+                        window.location.href = 'secret-page';
                       }
                     });
-
-                });
-            }
-
-
-        }).render('#paypal-button-container');
+                  });
+                }
+              }).render('#paypal-button-container');
+                      //contentType: "application/json; charset=UTF-8",
+                      //dataType: "json",
+                      // success: function (response){
+                      //   if (response == "success"){
+                      //     console.log("home.blade.php, the response is: " + response);
+                      //     $('#successful-payment').html("Payment successful!");
+                      //     //redirect to a secret members' page after a certain amount of time
+                      //     setTimeout(function () {
+                      //       window.location.href = "secret-page";
+                      //     }, 2500);
+                      //   }
+                      // }
+        //             });
+        //
+        //         });
+        //     }
+        //
+        //
+        // }).render('#paypal-button-container');
     </script>
 </body>
 <div class="container">

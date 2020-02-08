@@ -1,19 +1,21 @@
 <?php
+//namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
 
-namespace App\Http\Controllers;
+//use DB;
+//include '../config/dbConn.php';
 
-use \DB;
-include '../config/dbConn.php';
+//require '../bootstrap/app.php';
 
 class PaypalCheckout{
 
-  private $db;
-
-  public function __construct(){
-    print "PaypalCheckout.__construct()";
-    $conn = new dbConn();
-    $this->db = $conn->db();
-  }
+  // private $db;
+  //
+  // public function __construct(){
+  //   print "PaypalCheckout.__construct()";
+  //   $conn = new dbConn();
+  //   $this->db = $conn->db();
+  // }
 
   public function pay($username, $tid, $state){
     echo "PaypalCheckout.pay()";

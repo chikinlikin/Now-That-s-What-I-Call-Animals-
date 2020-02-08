@@ -1,27 +1,31 @@
-<?
+<?php
 
-//require_once "../app/Http/Controllers/PaypalCheckout.php";
-require_once("./PaypalCheckout.php");
+include "./PaypalCheckout.php";
+//use Illuminate\Support\Facades\Auth;
 
 //Create PaypalCheckout object
-var $payment = new PaypalCheckout();
+$payment = new PaypalCheckout();
 
-  if (isset($_POST['data'])){
-    print $_POST['data'];
-    echo $_POST['data'];
-  }
-  if ('username'){
-    $data = json_decode($_POST['data']);
-    echo $data;
-    if($_POST['tid'] != NULL && $_POST['state'] != NULL){
-      if($payment->pay($_SESSION['username'], $_POST['tid'], 10, $_POST['state']) == true){
-        $payment.update_membership($_SESSION['username']);
-        echo "success";
+//Access the session
+session_start();
+
+# Get JSON as a string
+$json_str = file_get_contents('php://input');
+# Get as an object
+$json_obj = json_decode($json_str, true);
+
+var_dump($_SESSION['username']);
+//var_dump(Auth::user()->name);
+
+// Check the value of status
+if ($json_obj['state'] == 'COMPLETED') {
+      if($json_obj['tid'] != NULL){
+        if($payment->pay($_SESSION['username'], $_POST['tid'], 10, $_POST['state']) == true){
+          $payment.update_membership($_SESSION['username']);
+        }
       }
+    } else {
+      //redirect to login
+      //echo "fail";
+      header("Location: ../home");
     }
-  } else {
-    //redirect to login
-    echo "fail";
-    header("Location: ../home");
-  }
-}
