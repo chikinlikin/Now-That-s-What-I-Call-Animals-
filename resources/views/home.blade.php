@@ -37,6 +37,7 @@
             // Finalize the transaction
             onApprove: function(data, actions) {
                 actions.order.capture().then(function(details) {
+                    alert("Payment successful!");
                     var path = "handle-payment.php";
                     $.ajax({
                       type: 'POST',

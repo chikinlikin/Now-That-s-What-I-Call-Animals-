@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 
-class PaymentController extends Controller {
-
 $json_str = file_get_contents('php://input');
 # Get as an object
 $json_obj = json_decode($json_str, true);
@@ -18,4 +16,3 @@ $json_obj = json_decode($json_str, true);
         //redirect to login
         header("Location: ../home");
   }
-}
