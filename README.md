@@ -6,6 +6,9 @@
 >> cd project-root <br>
 >> composer install<br>
 >> php artisan key:generate<br>
+>> npm install
+>> npm run development
+* Follow the steps here to create a VM https://laravel.com/docs/5.8/homestead
 >> php artisan serve
 
 * In browser, visit http://127.0.0.1:8000/
