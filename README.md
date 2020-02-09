@@ -20,7 +20,11 @@ As a result, the PayPal payment processes succesfully, but then does not trigger
 ## Members-only download ##
 The members-only download is secured in the following ways:
 
-1. A numbered list
-    1. A nested numbered list
-    2. Which is numbered
-2. Which is numbered
+1. User must be logged into the website
+2. User must have paid for membership (using the PayPal link on 'Home')
+    1. After a successful PayPal checkout, payment and user info is added to the User and Member databases 
+    2. The data is posted via aJax to a non-public class (PaymentController.php) using a public file 'include' (in payment-handler.php)
+    3. Following successful DB updates, the user should be redirected to '/secret-page' (but this doesn't work so you instead have to visit http://127.0.0.1:8000/secret-page directly)
+3. The 'secret-page' validates that the User is both logged in, and that they are also a Member, by looking up their details in the User table. Then, if both these conditions are satisfied, a greeting will display along with a download link.
+    1. If the user is logged in but is not also a Member then a different greeting will display and no download link is shown
+4. 
