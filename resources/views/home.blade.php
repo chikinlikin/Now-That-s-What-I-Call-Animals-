@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <?php header("Access-Control-Allow-Origin: *"); ?>
-    <!--php session_start(); ?-->
 </head>
 
 <body>
@@ -43,7 +42,7 @@
                       type: 'POST',
                       url: path,
                       data: JSON.stringify({
-                        name: '{{ Auth::User()->email }}',
+                        email: '{{ Auth::User()->email }}',
                         tid: details.id,
                         state: details.status
                       }),
@@ -74,8 +73,6 @@
       </div>
       <div class="col-8">
         <div class="card-header" style="color: green"> < < Subscribe now for just £10!</div>
-        <div class="card-header" id="successful-payment"></div>
-
         <div class="card-body">
         <ul><li>Exclusive animal facts and downloads</li>
 <li>Secure checkout with PayPal</li></ul>
@@ -83,13 +80,11 @@
     </div>
 
         <div class="row pt-4">
-          <!-- <div id="paypal-button-container"></div> -->
-
           <div class="col-4">
             <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Lion_d%27Afrique.jpg" class="w-100">
           </div>
           <div class="col-8">
-            <div class="card-header">The African Lion</div>
+            <div class="card-header" style="background-color: orange">The African Lion</div>
             <div class="card-body">
             <ul>
   <li>Favourite NOW! artist: Dua Lipa</li>
@@ -103,7 +98,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/3/32/Decorated_Indian_elephant.jpg" class="w-100">
           </div>
           <div class="col-8">
-            <div class="card-header">The Indian Elephant</div>
+            <div class="card-header" style="background-color: orange">The Indian Elephant</div>
             <div class="card-body">
             <ul>
   <li>Favourite NOW! artist: Girls Aloud</li>

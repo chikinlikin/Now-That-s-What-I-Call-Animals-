@@ -24,7 +24,7 @@ class Member extends Model
     }
 
     public function check_txn_id($tid){
-      $results = \DB::select('select COUNT(id) as total from members where tid = ?', [$tid]);
+      $results = DB::select('select COUNT(id) as total from members where tid = ?', [$tid]);
       if ($results->num_rows == 1){
         while($total = $results->fetch_assoc()){
           return $total['total'];
@@ -37,7 +37,7 @@ class Member extends Model
       $date = new \DateTime;
       $transaction_date = $date->format('dd/mm/YYYY hh:mm:ss');
       if($this->check_txn_id($tid) == 0){
-        \DB::table('members')->insert(
+        DB::table('members')->insert(
           [ 'email' => [$email],
             'tid' => [$tid],
             'transaction_date' => [$transaction_date]]

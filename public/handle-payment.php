@@ -1,2 +1,2 @@
 <?php
-include '../app/pay.php';
+include '../app/Http/Controllers/PaymentController.php';
