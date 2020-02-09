@@ -6,7 +6,7 @@
 >> cd Now-That-s-What-I-Call-Animals--0202 <br>
 >> composer install<br>
 >> composer update<br>
->> php artisan migrate<br>
+>> npm install<br>
 >> php artisan serve
 
 * In browser, visit http://127.0.0.1:8000/
