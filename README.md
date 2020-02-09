@@ -44,7 +44,7 @@ The members-only download is secured in the following ways:
 - Following successful DB updates, the user should be redirected to '/secret-page' (but this doesn't work, for the reasons above, and so you instead have to visit http://127.0.0.1:8000/secret-page directly after making the PayPal payment. I have hardcoded this page with 'isMember = true' for now to reflect a successful User update.)
 ### 3. The 'secret-page' validates that the user is both logged in, and that they are also a Member, by looking up their details in the User table. Then, if both these conditions are satisfied, a greeting will display along with a download link. ###
 - If the user is logged in but is not also a Member then a different greeting will display and no download link is shown
-- As mentioned above, 'isMember' is currently hardcoded to 'true' as I couldn't get the DB working.
+- As mentioned above, 'isMember' is currently hardcoded to 'true' as I couldn't get the DB reads/writes working
 ### 4. Clicking the 'Secret download!' link on the 'secret-page' routes the user through the SecretPageController where the id (string) sent on the request is matched to the one held in the class. This verifies the origin of the request and means that people can't try to trigger the download without coming from the 'secret-page' itself. ###
 - The id is currently hardcoded but should be stored in an encrypted file and changed/regenerated frequently and randomly.
 - Once the id is verified (as a match) then the user is forwarded to 'download.php'
