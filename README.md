@@ -4,10 +4,9 @@
 * Go to cmd<br>
 
 >> cd Now-That-s-What-I-Call-Animals--0202 <br>
->> composer install
->> composer update
->> 
->> php artisan migrate
+>> composer install<br>
+>> composer update<br>
+>> php artisan migrate<br>
 >> php artisan serve
 
 * In browser, visit http://127.0.0.1:8000/
