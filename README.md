@@ -1,5 +1,5 @@
-PAYPAL TEST USER CREDENTIALS
+#PAYPAL TEST USER CREDENTIALS<br>
 e-mail: sb-vqrna986402@personal.example.com
-passwod: C#:8ekN/
+password: C#:8ekN/
 
 
