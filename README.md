@@ -6,6 +6,8 @@
 >> cd Now-That-s-What-I-Call-Animals--0202 <br>
 >> composer install<br>
 >> composer update<br>
+>> php artisan key:generate<br>
+>> php artisan migrate
 >> npm install<br>
 >> php artisan serve
 
