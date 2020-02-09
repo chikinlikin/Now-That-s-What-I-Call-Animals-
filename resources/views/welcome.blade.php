@@ -101,13 +101,10 @@
                   <div class="mid-title">That's What I Call</div> <br>
                   <div class="bottom-title">Animals!</div>
                 <div class="links sidebar flex-center position-ref">
-                    <a href="https://laravel.com/docs">Docs</a><br>
-                    <a href="https://laracasts.com">Laracasts</a><br>
-                    <a href="https://laravel-news.com">News</a><br>
-                    <a href="https://blog.laravel.com">Blog</a><br>
-                    <a href="https://nova.laravel.com">Nova</a><br>
-                    <a href="https://forge.laravel.com">Forge</a><br>
-                    <a href="https://vapor.laravel.com">Vapor</a><br>
+                    <a href="https://en.wikipedia.org/wiki/Lion">Lions</a><br>
+                    <a href="https://en.wikipedia.org/wiki/Tiger">Tigers</a><br>
+                    <a href="https://en.wikipedia.org/wiki/Bear">Bears</a><br>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Oh My!</a><br>
                 </div>
             </div>
         </div>

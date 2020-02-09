@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -51,5 +52,11 @@ class User extends Authenticatable
       } else {
         return false;
     }
+  }
+
+  public function update_membership($username){
+    DB::table('users')
+            ->where('username', [$username])
+            ->update(['membership' => 1]);
   }
 }

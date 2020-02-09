@@ -29,12 +29,13 @@ class SecretPageController extends Controller
       }
     }
 
-    public function download()
+    public function download(Request $request)
     {
-      return redirect()->to('download.php');
+      $id = $request->get('id');
+      if ($id == "hh235234kkk25929@@#as"){
+        return redirect()->to('/download.php');
+      } else {
+      return view('secret-page');
     }
-
-    // public function pay(){
-    //   return redirect()->to('pay.php');
-    // }
+    }
 }

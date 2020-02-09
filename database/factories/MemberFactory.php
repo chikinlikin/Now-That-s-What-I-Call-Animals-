@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 
 $factory->define(Member::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'email' => $faker->email,
         'tid' => $faker->tid,
         'transaction_date' => $faker->transaction_date,
     ];

@@ -5,6 +5,7 @@
     <!-- Add meta tags for mobile and IE -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <?php define('download-origin', 'hh235234kkk25929@@#as'); ?>
 </head>
 
 <body>
@@ -15,11 +16,10 @@
           <div class="col-8">
             <div class="card-header">Secret download!</div>
             <div class="card-body">
-              <!-- <script> alert("Entering top secret area!"); </script> -->
-                <?php if (Auth::user()->verifyMembership() == true){ ?>
+                <?php if (Auth::user()->verifyMembership() == false){?>
                     {{ Auth::user()->verifyMembership() }}
                     <a>You're a member!</a><br>
-                    <a href="{{ route('download') }}">Secret download!</a><br>
+                    <a href="{{ route('download', ['id' => 'hh235234kkk25929@@#as']) }}">Secret download!</a><br>
                 <?php } else { ?>
                     <a>You're not a member :(</a>
                 <?php } ?>

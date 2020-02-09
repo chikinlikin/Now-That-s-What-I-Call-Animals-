@@ -1,17 +1,10 @@
-<!--
+<?php
 namespace App\Http\Controllers;
-
-use \DB;
-//include '../config/dbConn.php';
 
 class PaypalCheckout{
 
-  //private $db;
-
   public function __construct(){
-    print "Creating new PayPalCheckout instance";
-    // $conn = new dbConn();
-    // $this->db = $conn->db();
+    print "PaypalCheckout.__construct()";
   }
 
   public function pay($username, $tid, $state){
@@ -38,9 +31,6 @@ class PaypalCheckout{
 
   public function check_txn_id($tid){
     echo "PaypalCheckout.check_txn_id()";
-    // price = DB::table('orders')
-    //             ->where('finalized', 1)
-    //             ->avg('price');
     $results = \DB::select('select COUNT(id) as total from members where tid = ?', [$tid]);
     if ($results->num_rows == 1){
       while($total = $results->fetch_assoc()){
@@ -49,4 +39,4 @@ class PaypalCheckout{
     }
     return false;
   }
-} -->
+}
