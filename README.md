@@ -22,7 +22,7 @@ password: C#:8ekN/
 ## Namespace issue ##
 I got stuck with namespaces/dependencies :(
 
-As a result, the PayPal payment processes succesfully, but then does not trigger the necessary DB reads/writes to update the User and Member information tables. 
+As a result, the PayPal payment processes successfully, but then does not trigger the necessary DB reads/writes to update the User and Member information tables. 
 
 However, I have implemented all the DB operations for User and Member (see those classes), they just aren't 'wired up' correctly... 
 
