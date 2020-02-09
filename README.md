@@ -1,12 +1,12 @@
 # Now That's What I Call Animals! #
 ## Launch the site locally ##
-Download and extract the project<br>
-Go to cmd<br>
+* Download and extract the project<br>
+* Go to cmd<br>
 
-> cd *project-folder* <br>
-> php artisan serve
+>> cd *project-folder* <br>
+>> php artisan serve
 
-In browser, visit http://127.0.0.1:8000/
+* In browser, visit http://127.0.0.1:8000/
 
 ## PayPal test user credentials ##
 There's a sandbox user account for this app. Please use:<br>
