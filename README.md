@@ -41,7 +41,7 @@ The members-only download is secured in the following ways:
 ### 2. User must have paid for membership (using the PayPal link on 'Home') ###
 - After a successful PayPal checkout, payment and user info is added to the User and Member databases 
 - The data is posted via aJax to a non-public class (PaymentController.php) using a public file 'include' (in payment-handler.php)
-- Following successful DB updates, the user should be redirected to '/secret-page' (but this doesn't work so you instead have to visit http://127.0.0.1:8000/secret-page directly after making the PayPal payment. I have hardcoded this page with 'isMember = true' for now.)
+- Following successful DB updates, the user should be redirected to '/secret-page' (but this doesn't work, for the reasons above, and so you instead have to visit http://127.0.0.1:8000/secret-page directly after making the PayPal payment. I have hardcoded this page with 'isMember = true' for now to reflect a successful User update.)
 ### 3. The 'secret-page' validates that the user is both logged in, and that they are also a Member, by looking up their details in the User table. Then, if both these conditions are satisfied, a greeting will display along with a download link. ###
 - If the user is logged in but is not also a Member then a different greeting will display and no download link is shown
 - As mentioned above, 'isMember' is currently hardcoded to 'true' as I couldn't get the DB working.
