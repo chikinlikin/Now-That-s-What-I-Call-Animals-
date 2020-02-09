@@ -3,12 +3,9 @@
 * Download and extract the project<br>
 * Go to cmd<br>
 
->> cd Now-That-s-What-I-Call-Animals--0202 <br>
+>> cd project-root <br>
 >> composer install<br>
->> composer update<br>
 >> php artisan key:generate<br>
->> php artisan migrate
->> npm install<br>
 >> php artisan serve
 
 * In browser, visit http://127.0.0.1:8000/
